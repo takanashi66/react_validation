@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+//*------------------------------------*//
+//	Base
+//*------------------------------------*//
+
+@import 'base/reset',
+        'base/var',
+        'base/default';
+
+
+
+
+
+
+//*------------------------------------*//
+//	page
+//*------------------------------------*//
+@import 'form';
+
+main{
+    width: 800px;
+    margin: 0 auto;
+    font-size: 1.4rem;
+}
+
+h1{
+    font-size: 3rem;
+    margin: 20px 0;
+    text-align: center;
+}
+
+h2{
+    font-size: 2rem;
+    margin: 20px 0;
+}
+
+nav{
+    background-color: #ccc;
+    
+    ul{
+        display: flex;
+        
+        li{
+            a{
+                font-size: 14px;
+                display: block;
+                padding: .3em 1em;
+            }
+        }
+    }
+}
