@@ -45,7 +45,7 @@ const Confirm = (props) =>{
             </div>
             
             <div className="link_btn">
-                <a href="#" onClick={ props.submitFormData }>入力開始</a>
+                <a href="#" onClick={ props.submitFormData }>送信</a>
             </div>
         </div>
     )
