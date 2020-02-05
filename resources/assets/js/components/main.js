@@ -16,14 +16,13 @@ const Main = (props) =>{
                     <li><Link to='/'>Home</Link></li>
                     <li><Link to='/about'>About</Link></li>
                     <li><Link to='/friends'>Friends</Link></li>
-                    <li><a href="#test">テスト</a></li>
                 </ul>
             </nav>
             
             <Switch>
                 <Route exact path='/' component={Home} />
                 <Route path='/about' component={About} />
-                <Route path='/form' render={() => <Form ajaxSubmit={ props.ajaxSubmit } />} />
+                <Route path='/form' render={() => <Form ajaxSubmit={ props.ajaxSubmit } returnForm={ props.returnForm } form={ props.form } confirmVisible={ props.confirmVisible } />} />
                 <Route path='*' component={NoMatch} />
             </Switch>
         </main>

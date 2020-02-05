@@ -10,14 +10,46 @@ class App extends React.Component{
     constructor(props) {
         super(props)
         this.state = {
-            count: 10
-        };
+            confirmVisible: false,
+            form: [{}]
+        }
+        
+        this.ajaxSubmit = this.ajaxSubmit.bind(this)
+        this.returnForm = this.returnForm.bind(this)
     }
     
     ajaxSubmit(e){
         e.preventDefault()
-        rsScroller.scrollToTarget('test');
-        console.log("submit");
+        //rsScroller.scrollToTarget('test');
+        
+        const name = document.querySelector('#form input[name=name]').value
+        const zip = document.querySelector('#form input[name=zip]').value
+        const prefectures = document.querySelector('#form input[name=prefectures]').value
+        const city = document.querySelector('#form input[name=city]').value
+        const other = document.querySelector('#form input[name=other]').value
+        const apartment = document.querySelector('#form input[name=apartment]').value
+        
+        this.setState({
+            confirmVisible: true,
+            form: [{
+                name: name,
+                zip: zip,
+                prefectures: prefectures,
+                city: city,
+                other: other,
+                apartment: apartment
+            }]
+        })
+        
+        
+    }
+    
+    returnForm(e){
+        e.preventDefault()
+        
+        this.setState({
+            confirmVisible: false
+        })
     }
     
     render(){
@@ -28,8 +60,7 @@ class App extends React.Component{
                         <h1>タイトル!</h1>
                     </header>
                     
-                    <Main ajaxSubmit={ this.ajaxSubmit } />
-                    
+                    <Main ajaxSubmit={ this.ajaxSubmit } returnForm={ this.returnForm } form={ this.state.form } confirmVisible={ this.state.confirmVisible }/>
                 </div>
             </BrowserRouter>
         )
