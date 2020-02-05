@@ -20,10 +20,10 @@ const Main = (props) =>{
             </nav>
             
             <Switch>
-                <Route exact path='/' component={Home} />
-                <Route path='/about' component={About} />
-                <Route path='/form' render={() => <Form ajaxSubmit={ props.ajaxSubmit } returnForm={ props.returnForm } form={ props.form } confirmVisible={ props.confirmVisible } />} />
-                <Route path='*' component={NoMatch} />
+                <Route exact path='/' component={ Home } />
+                <Route path='/about' component={ About } />
+                <Route path='/form' render={() => <Form { ...props } />} />
+                <Route path='*' component={ NoMatch } />
             </Switch>
         </main>
     )

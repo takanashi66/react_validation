@@ -7,7 +7,9 @@ const Home = () =>{
         <div>
             <h2>Home</h2>
             <p>Welcome to ようこそ</p>
-            <Link to='/form'>入力開始</Link>
+            <div className="link_btn">
+                <Link to='/form'>入力開始</Link>
+            </div>
         </div>
     )
 }
