@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 
 import { Textbox, Radiobox, Checkbox, Select, Textarea } from 'react-inputs-validation';
@@ -7,7 +7,7 @@ import { Textbox, Radiobox, Checkbox, Select, Textarea } from 'react-inputs-vali
 const FormMain = (props) =>{
     
     return(
-        <form id="form">
+        <form id="form" onSubmit={ props.goToConfirm }>
             { props.formData && props.formData.map((item, i) => {
                 return(
                     <div key={ i }>
@@ -20,11 +20,17 @@ const FormMain = (props) =>{
                             }}
                             value={ item.name }
                             onBlur={(e) => {}}
+                            onChange={(e) => {}}
+                            validate={props.validate}
                             validationOption={{
                                 name: 'name',
                                 check: true,
                                 required: true,
                             }}
+                            validationCallback={res =>{
+                                props.setHasError(res)
+                                props.setValidate(false)
+                            }} 
                         />
 
                         <label htmlFor="zip">郵便番号 <span className="required">必須</span></label>
@@ -36,7 +42,9 @@ const FormMain = (props) =>{
                             }}
                             value={ item.zip }
                             onBlur={(e) => {}}
+                            onChange={(e) => {}}
                             onKeyUp={(e) => {}}
+                            validate={props.validate}
                             validationOption={{
                                 name: 'zip',
                                 check: true,
@@ -44,6 +52,10 @@ const FormMain = (props) =>{
                                 min: 7,
                                 max: 8
                             }}
+                            validationCallback={res =>{
+                                props.setHasError(res)
+                                props.setValidate(false)
+                            }} 
                         />
                         
                         <label htmlFor="prefectures">都道府県 <span className="required">必須</span></label>
@@ -55,11 +67,17 @@ const FormMain = (props) =>{
                             }}
                             value={ item.prefectures }
                             onBlur={(e) => {}}
+                            onChange={(e) => {}}
+                            validate={props.validate}
                             validationOption={{
                                 name: 'prefectures',
                                 check: true,
                                 required: true,
                             }}
+                            validationCallback={res =>{
+                                props.setHasError(res)
+                                props.setValidate(false)
+                            }} 
                         />
                         
                         <label htmlFor="city">市区町村 <span className="required">必須</span></label>
@@ -71,11 +89,17 @@ const FormMain = (props) =>{
                             }}
                             value={ item.city }
                             onBlur={(e) => {}}
+                            onChange={(e) => {}}
+                            validate={props.validate}
                             validationOption={{
                                 name: 'city',
                                 check: true,
                                 required: true,
                             }}
+                            validationCallback={res =>{
+                                props.setHasError(res)
+                                props.setValidate(false)
+                            }} 
                         />
                         
                         <label htmlFor="other">以降の住所 <span className="required">必須</span></label>
@@ -87,11 +111,17 @@ const FormMain = (props) =>{
                             }}
                             value={ item.other }
                             onBlur={(e) => {}}
+                            onChange={(e) => {}}
+                            validate={props.validate}
                             validationOption={{
                                 name: 'other',
                                 check: true,
                                 required: true,
                             }}
+                            validationCallback={res =>{
+                                props.setHasError(res)
+                                props.setValidate(false)
+                            }} 
                         />
                         
                         <label htmlFor="apartment">マンション名等</label>
@@ -112,7 +142,7 @@ const FormMain = (props) =>{
                 )
             }) }
             
-            <input type="submit" value="確認" onClick={ props.goToConfirm }/>
+            <input type="submit" value="確認" onClick={props.submitFormData}/>
         </form>
     )
 }

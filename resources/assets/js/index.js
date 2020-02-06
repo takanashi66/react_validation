@@ -11,34 +11,42 @@ const App = () => {
     const [confirmVisible, setConfirmVisible] = useState(false)
     //入力値
     const [formData, setFormData] = useState([{}])
-    //エラーメッセージ
-    const [formMsg, setFormMsg] = useState([{}])
+    
+    //バリデーションのフラグ
+    const [validate, setValidate] = useState(false)
+    const [hasError, setHasError] = useState(true)
     
     //確認画面へ
     const goToConfirm = (e) => {
         e.preventDefault()
         //rsScroller.scrollToTarget('test');
         
-        //フォームの入力データを取得
-        const name = document.querySelector('#form input[name=name]').value
-        const zip = document.querySelector('#form input[name=zip]').value
-        const prefectures = document.querySelector('#form input[name=prefectures]').value
-        const city = document.querySelector('#form input[name=city]').value
-        const other = document.querySelector('#form input[name=other]').value
-        const apartment = document.querySelector('#form input[name=apartment]').value
+        //再度バリデーション
+        setValidate(true)
         
-        //取得した入力データをstateに保存
-        setFormData([{
-            name: name,
-            zip: zip,
-            prefectures: prefectures,
-            city: city,
-            other: other,
-            apartment: apartment
-        }])
-        
-        //確認画面を表示
-        setConfirmVisible(true)
+        //バリデーションエラーがなければ入力データを取得して確認画面へ遷移
+        if(!hasError){
+            //フォームの入力データを取得
+            const name = document.querySelector('#form input[name=name]').value
+            const zip = document.querySelector('#form input[name=zip]').value
+            const prefectures = document.querySelector('#form input[name=prefectures]').value
+            const city = document.querySelector('#form input[name=city]').value
+            const other = document.querySelector('#form input[name=other]').value
+            const apartment = document.querySelector('#form input[name=apartment]').value
+            
+            //取得した入力データをstateに保存
+            setFormData([{
+                name: name,
+                zip: zip,
+                prefectures: prefectures,
+                city: city,
+                other: other,
+                apartment: apartment
+            }])
+            
+            //確認画面を表示
+            setConfirmVisible(true)
+        }
     }
     
     //入力画面に戻る
@@ -73,6 +81,10 @@ const App = () => {
                     submitFormData={ submitFormData } 
                     formData={ formData } 
                     confirmVisible={ confirmVisible }
+                    validate={ validate }
+                    setValidate={ setValidate }
+                    hasError={ hasError }
+                    setHasError={ setHasError }
                 />
             </div>
         </BrowserRouter>
