@@ -11,7 +11,6 @@ const App = () => {
     const [confirmVisible, setConfirmVisible] = useState(false)
     //入力値
     const [formData, setFormData] = useState([{}])
-    
     //バリデーションのフラグ
     const [validate, setValidate] = useState(false)
     const [hasError, setHasError] = useState(true)
@@ -34,6 +33,7 @@ const App = () => {
             const city = document.querySelector('#form input[name=city]').value
             const other = document.querySelector('#form input[name=other]').value
             const apartment = document.querySelector('#form input[name=apartment]').value
+            const remarks = document.querySelector('#form textarea[name=remarks]').value
             
             //取得した入力データをstateに保存
             setFormData([{
@@ -43,12 +43,25 @@ const App = () => {
                 prefectures: prefectures,
                 city: city,
                 other: other,
-                apartment: apartment
+                apartment: apartment,
+                remarks: remarks
             }])
             
             //確認画面を表示
             setConfirmVisible(true)
         }
+    }
+    
+    //改行を表示
+    const nl2br = (text) => {
+        const regex = /(\n)/g
+        return text.split(regex).map((line, i) =>{
+            if(line.match(regex)) {
+                return <br key={i} />
+            }else{
+                return line;
+            }
+        });
     }
     
     //入力画面に戻る
@@ -87,6 +100,7 @@ const App = () => {
                     setValidate={ setValidate }
                     hasError={ hasError }
                     setHasError={ setHasError }
+                    nl2br={ nl2br }
                 />
             </div>
         </BrowserRouter>

@@ -38,6 +38,10 @@ const Confirm = (props) =>{
                                 <th>マンション名等</th>
                                 <td>{ item.apartment }</td>
                             </tr>
+                            <tr>
+                                <th>備考</th>
+                                <td>{ props.nl2br(item.remarks) }</td>
+                            </tr>
                         </tbody>
                     )
                 }) }

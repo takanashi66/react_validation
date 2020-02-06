@@ -171,6 +171,21 @@ const FormMain = (props) =>{
                                 required: false,
                             }}
                         />
+                    
+                    <label htmlFor="remarks">備考</label>
+                    <Textarea
+                        attributesInput={{
+                            id: 'remarks',
+                            name: 'remarks',
+                            type: 'text',
+                        }}
+                        value={ item.remarks }
+                        validationOption={{
+                            name: 'remarks',
+                            check: false,
+                            required: false,
+                        }}
+                    />
                     </div>
                 )
             }) }

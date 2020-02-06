@@ -13,7 +13,7 @@ const Form = (props) =>{
         rsScroller.scrollToTop();
     }
     
-    const rendering = props.confirmVisible ? <Confirm formData={ props.formData } returnForm={ props.returnForm } submitFormData={ props.submitFormData } /> : <FormMain goToConfirm={ props.goToConfirm } formData={ props.formData } validate={ props.validate } setValidate={ props.setValidate } hasError={ props.hasError } setHasError={ props.setHasError } />
+    const rendering = props.confirmVisible ? <Confirm formData={ props.formData } nl2br={ props.nl2br } returnForm={ props.returnForm } submitFormData={ props.submitFormData } /> : <FormMain goToConfirm={ props.goToConfirm } formData={ props.formData } validate={ props.validate } setValidate={ props.setValidate } hasError={ props.hasError } setHasError={ props.setHasError } />
     const title = props.confirmVisible ? "Confirm" : "Form"
     
     return(
