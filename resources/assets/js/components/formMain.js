@@ -3,15 +3,14 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 
 //FormMain
 const FormMain = (props) =>{
-    console.log(props.formData);
     return(
-        <form action="#" id="form">
+        <form id="form">
             { props.formData && props.formData.map((item, i) => {
                 return(
                     <div key={ i }>
                         <label htmlFor="name">お名前 <span className="required">必須</span></label>
                         <input type="text" name="name" id="name" defaultValue={ item.name }/>
-                        
+
                         <label htmlFor="zip">郵便番号 <span className="required">必須</span></label>
                         <input type="text" name="zip" id="zip" defaultValue={ item.zip }/>
                         

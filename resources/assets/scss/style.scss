@@ -18,6 +18,29 @@
 //*------------------------------------*//
 @import 'form';
 
+@keyframes fadeIn {
+    0% {
+        opacity:0;
+        visibility: hidden;
+    }
+    100% {
+        opacity:1;
+        visibility: visible;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity:1;
+        visibility: visible;
+    }
+    100% {
+        opacity:0;
+        visibility: hidden;
+    }
+}
+
+
 main{
     width: 800px;
     margin: 0 auto;

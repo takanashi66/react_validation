@@ -11,6 +11,8 @@ const App = () => {
     const [confirmVisible, setConfirmVisible] = useState(false)
     //入力値
     const [formData, setFormData] = useState([{}])
+    //エラーメッセージ
+    const [formMsg, setFormMsg] = useState([{}])
     
     //確認画面へ
     const goToConfirm = (e) => {
