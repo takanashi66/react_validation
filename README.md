@@ -1,6 +1,7 @@
-# react-router_test
+# react-routerのテストのつもりがバリデーションのテストに
 
-react-routerで遊んでみた
+react-inputs-validationを使ったバリデーションの実装
 
 ## 参考
-+ [react-router@v4を使ってみよう：シンプルなtutorial](https://qiita.com/muiscript/items/b4ca1773580317e7112e)
++ [react-inputs-validation](https://www.npmjs.com/package/react-inputs-validation)
++ [react-inputs-validation Example](https://edwardfhsiao.github.io/react-inputs-validation/)

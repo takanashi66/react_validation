@@ -28,6 +28,7 @@ const App = () => {
         if(!hasError){
             //フォームの入力データを取得
             const name = document.querySelector('#form input[name=name]').value
+            const email = document.querySelector('#form input[name=email]').value
             const zip = document.querySelector('#form input[name=zip]').value
             const prefectures = document.querySelector('#form input[name=prefectures]').value
             const city = document.querySelector('#form input[name=city]').value
@@ -37,6 +38,7 @@ const App = () => {
             //取得した入力データをstateに保存
             setFormData([{
                 name: name,
+                email: email,
                 zip: zip,
                 prefectures: prefectures,
                 city: city,

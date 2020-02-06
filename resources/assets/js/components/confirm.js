@@ -15,6 +15,10 @@ const Confirm = (props) =>{
                                 <td>{ item.name }</td>
                             </tr>
                             <tr>
+                                <th>メールアドレス</th>
+                                <td>{ item.email }</td>
+                            </tr>
+                            <tr>
                                 <th>郵便番号</th>
                                 <td>{ item.zip }</td>
                             </tr>

@@ -7,7 +7,7 @@ import { Textbox, Radiobox, Checkbox, Select, Textarea } from 'react-inputs-vali
 const FormMain = (props) =>{
     
     return(
-        <form id="form" onSubmit={ props.goToConfirm }>
+        <form id="form" onSubmit={ props.goToConfirm } noValidate>
             { props.formData && props.formData.map((item, i) => {
                 return(
                     <div key={ i }>
@@ -20,12 +20,41 @@ const FormMain = (props) =>{
                             }}
                             value={ item.name }
                             onBlur={(e) => {}}
-                            onChange={(e) => {}}
-                            validate={props.validate}
+                            validate={props.validate /* バリデーションチェックの有無 */}
                             validationOption={{
                                 name: 'name',
                                 check: true,
                                 required: true,
+                            }}
+                            validationCallback={res =>{
+                                props.setHasError(res)
+                                props.setValidate(false)
+                            }} 
+                        />
+                    
+                    <label htmlFor="email">メールアドレス <span className="required">必須</span></label>
+                        <Textbox
+                            attributesInput={{
+                                id: 'email',
+                                name: 'email',
+                                type: 'email',
+                            }}
+                            value={ item.email }
+                            onBlur={(e) => {}}
+                            onKeyUp={(e) => {}}
+                            validate={props.validate /* バリデーションチェックの有無 */}
+                            validationOption={{
+                                name: 'email',
+                                check: true,
+                                required: true,
+                                customFunc: email => {
+                                    const reg = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                                    if (reg.test(String(email).toLowerCase())) {
+                                        return true;
+                                    } else {
+                                        return 'メールアドレスの形式が正しくありません。';
+                                    }
+                                }
                             }}
                             validationCallback={res =>{
                                 props.setHasError(res)
@@ -42,15 +71,22 @@ const FormMain = (props) =>{
                             }}
                             value={ item.zip }
                             onBlur={(e) => {}}
-                            onChange={(e) => {}}
                             onKeyUp={(e) => {}}
-                            validate={props.validate}
+                            validate={props.validate /* バリデーションチェックの有無 */}
                             validationOption={{
                                 name: 'zip',
                                 check: true,
                                 required: true,
                                 min: 7,
-                                max: 8
+                                max: 8,
+                                customFunc: zip => {
+                                    const reg = /^\d{3}[-]?\d{4}$/;
+                                    if (reg.test(String(zip))) {
+                                        return true;
+                                    } else {
+                                        return '数字と-のみ使えます。';
+                                    }
+                                }
                             }}
                             validationCallback={res =>{
                                 props.setHasError(res)
@@ -67,8 +103,7 @@ const FormMain = (props) =>{
                             }}
                             value={ item.prefectures }
                             onBlur={(e) => {}}
-                            onChange={(e) => {}}
-                            validate={props.validate}
+                            validate={props.validate /* バリデーションチェックの有無 */}
                             validationOption={{
                                 name: 'prefectures',
                                 check: true,
@@ -89,8 +124,7 @@ const FormMain = (props) =>{
                             }}
                             value={ item.city }
                             onBlur={(e) => {}}
-                            onChange={(e) => {}}
-                            validate={props.validate}
+                            validate={props.validate /* バリデーションチェックの有無 */}
                             validationOption={{
                                 name: 'city',
                                 check: true,
@@ -111,8 +145,7 @@ const FormMain = (props) =>{
                             }}
                             value={ item.other }
                             onBlur={(e) => {}}
-                            onChange={(e) => {}}
-                            validate={props.validate}
+                            validate={props.validate /* バリデーションチェックの有無 */}
                             validationOption={{
                                 name: 'other',
                                 check: true,
