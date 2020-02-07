@@ -3,6 +3,17 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom'
 
 //Confirm
 const Confirm = (props) =>{
+    
+    const getGenderLabel = (gen) =>{
+        if(gen == "men"){
+            return "男"
+        }else if(gen == "women"){
+            return "女"
+        }else{
+            return "その他"
+        }
+    }
+    
     return(
         <div>
             <table className="confirm_table">
@@ -37,6 +48,10 @@ const Confirm = (props) =>{
                             <tr>
                                 <th>マンション名等</th>
                                 <td>{ item.apartment }</td>
+                            </tr>
+                            <tr>
+                                <th>性別</th>
+                                <td>{ getGenderLabel(item.gender) }</td>
                             </tr>
                             <tr>
                                 <th>備考</th>

@@ -12,9 +12,10 @@ const FormMain = (props) =>{
     const [hasPrefecturesError, setPrefecturesHasError] = useState(true)
     const [hasCityError, setCityHasError] = useState(true)
     const [hasOtherError, setOtherHasError] = useState(true)
+    const [hasGenderError, setGenderHasError] = useState(true)
     
     //バリデーション結果を反転させて論理 AND
-    props.setHasError(!hasNameError && !hasEmailError && !hasZipError && !hasPrefecturesError && !hasCityError && !hasOtherError)
+    props.setHasError(!hasNameError && !hasEmailError && !hasZipError && !hasPrefecturesError && !hasCityError && !hasOtherError && !hasGenderError)
     
     return(
         <form id="form" onSubmit={ props.goToConfirm } noValidate>
@@ -42,7 +43,7 @@ const FormMain = (props) =>{
                             }} 
                         />
                     
-                    <label htmlFor="email">メールアドレス <span className="required">必須</span></label>
+                        <label htmlFor="email">メールアドレス <span className="required">必須</span></label>
                         <Textbox
                             attributesInput={{
                                 id: 'email',
@@ -181,21 +182,52 @@ const FormMain = (props) =>{
                                 required: false,
                             }}
                         />
-                    
-                    <label htmlFor="remarks">備考</label>
-                    <Textarea
-                        attributesInput={{
-                            id: 'remarks',
-                            name: 'remarks',
-                            type: 'text',
-                        }}
-                        value={ item.remarks }
-                        validationOption={{
-                            name: 'remarks',
-                            check: false,
-                            required: false,
-                        }}
-                    />
+                        
+                        <label htmlFor="gender">性別</label>
+                        <Radiobox
+                            attributesInput={{
+                                id: 'gender',
+                                name: 'gender',
+                            }}
+                            optionList={[
+                                { id: 'men', name: '男' },
+                                { id: 'women', name: '女' },
+                                { id: 'other', name: 'その他' },
+                            ]}
+                            customStyleContainer={{
+                                display: 'flex',
+                                justifyContent: 'flex-start'
+                            }}
+                            value={ item.gender }
+                            customStyleOptionListItem={{ marginRight: '20px' }}
+                            onChange={() =>{}}
+                            onBlur={() => {}}
+                            validate={props.validate /* バリデーションチェックの有無 */}
+                            validationCallback={res =>{
+                                setGenderHasError(res)
+                                props.setValidate(false)
+                            }} 
+                            validationOption={{
+                                name: 'gender',
+                                check: true,
+                                required: true
+                            }}
+                        />
+                        
+                        <label htmlFor="remarks">備考</label>
+                        <Textarea
+                            attributesInput={{
+                                id: 'remarks',
+                                name: 'remarks',
+                                type: 'text',
+                            }}
+                            value={ item.remarks }
+                            validationOption={{
+                                name: 'remarks',
+                                check: false,
+                                required: false,
+                            }}
+                        />
                     </div>
                 )
             }) }

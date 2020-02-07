@@ -33,6 +33,7 @@ const App = () => {
             const city = document.querySelector('#form input[name=city]').value
             const other = document.querySelector('#form input[name=other]').value
             const apartment = document.querySelector('#form input[name=apartment]').value
+            const gender = document.querySelector('#form #react-inputs-validation__radiobox_option-men').value
             const remarks = document.querySelector('#form textarea[name=remarks]').value
             
             //取得した入力データをstateに保存
@@ -44,6 +45,7 @@ const App = () => {
                 city: city,
                 other: other,
                 apartment: apartment,
+                gender: gender,
                 remarks: remarks
             }])
             

@@ -36,7 +36,7 @@ input[type=text][name=tool_des_zip]{
     max-width: 15em;
 }
 
-label{
+label:not(.react-inputs-validation__radiobox__label___2tQsB){
     display: flex;
     align-items: center;
     font-size: 1.4rem;
