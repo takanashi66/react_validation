@@ -5,6 +5,16 @@ import { Textbox, Radiobox, Checkbox, Select, Textarea } from 'react-inputs-vali
 
 //FormMain
 const FormMain = (props) =>{
+    //バリデーション項目のバリデーション結果
+    const [hasNameError, setNanmeHasError] = useState(true)
+    const [hasEmailError, setEmailHasError] = useState(true)
+    const [hasZipError, setZipHasError] = useState(true)
+    const [hasPrefecturesError, setPrefecturesHasError] = useState(true)
+    const [hasCityError, setCityHasError] = useState(true)
+    const [hasOtherError, setOtherHasError] = useState(true)
+    
+    //バリデーション結果を反転させて論理 AND
+    props.setHasError(!hasNameError && !hasEmailError && !hasZipError && !hasPrefecturesError && !hasCityError && !hasOtherError)
     
     return(
         <form id="form" onSubmit={ props.goToConfirm } noValidate>
@@ -27,7 +37,7 @@ const FormMain = (props) =>{
                                 required: true,
                             }}
                             validationCallback={res =>{
-                                props.setHasError(res)
+                                setNanmeHasError(res)
                                 props.setValidate(false)
                             }} 
                         />
@@ -57,7 +67,7 @@ const FormMain = (props) =>{
                                 }
                             }}
                             validationCallback={res =>{
-                                props.setHasError(res)
+                                setEmailHasError(res)
                                 props.setValidate(false)
                             }} 
                         />
@@ -89,7 +99,7 @@ const FormMain = (props) =>{
                                 }
                             }}
                             validationCallback={res =>{
-                                props.setHasError(res)
+                                setZipHasError(res)
                                 props.setValidate(false)
                             }} 
                         />
@@ -110,7 +120,7 @@ const FormMain = (props) =>{
                                 required: true,
                             }}
                             validationCallback={res =>{
-                                props.setHasError(res)
+                                setPrefecturesHasError(res)
                                 props.setValidate(false)
                             }} 
                         />
@@ -131,7 +141,7 @@ const FormMain = (props) =>{
                                 required: true,
                             }}
                             validationCallback={res =>{
-                                props.setHasError(res)
+                                setCityHasError(res)
                                 props.setValidate(false)
                             }} 
                         />
@@ -152,7 +162,7 @@ const FormMain = (props) =>{
                                 required: true,
                             }}
                             validationCallback={res =>{
-                                props.setHasError(res)
+                                setOtherHasError(res)
                                 props.setValidate(false)
                             }} 
                         />

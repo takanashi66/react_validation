@@ -13,7 +13,7 @@ const App = () => {
     const [formData, setFormData] = useState([{}])
     //バリデーションのフラグ
     const [validate, setValidate] = useState(false)
-    const [hasError, setHasError] = useState(true)
+    const [hasError, setHasError] = useState(false)
     
     //確認画面へ
     const goToConfirm = (e) => {
@@ -24,7 +24,7 @@ const App = () => {
         setValidate(true)
         
         //バリデーションエラーがなければ入力データを取得して確認画面へ遷移
-        if(!hasError){
+        if(hasError){
             //フォームの入力データを取得
             const name = document.querySelector('#form input[name=name]').value
             const email = document.querySelector('#form input[name=email]').value
@@ -78,6 +78,9 @@ const App = () => {
         
         //確認画面を非表示
         setConfirmVisible(false)
+        
+        //再度バリデーションが走らないように
+        setValidate(false)
         
         //取得した入力データをstateから削除
         setFormData([{}])
