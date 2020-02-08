@@ -18,11 +18,11 @@ const Main = (props) =>{
                     <li><Link to='/friends'>Friends</Link></li>
                 </ul>
             </nav>
-            
+
             <Switch>
                 <Route exact path='/' component={ Home } />
                 <Route path='/about' component={ About } />
-                <Route path='/form' render={() => <Form { ...props } />} />
+                <Route path='/form' render={() => <Form { ...props.form } />} />
                 <Route path='*' component={ NoMatch } />
             </Switch>
         </main>
